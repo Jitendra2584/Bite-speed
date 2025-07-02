@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // Input schema for /identify endpoint
 export const IdentifyRequestSchema = z.object({
-  email: z.string().email().optional().nullable(),
+  email: z.string().max(1000).email().optional().nullable(),
   phoneNumber: z.string().min(1).max(20).optional().nullable()
 }).refine(
   (data) => data.email ?? data.phoneNumber,
