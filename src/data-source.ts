@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER ?? "your_pg_username",
   password: process.env.DB_PASSWORD ?? "your_pg_password",
   database: process.env.DB_NAME ?? "bites_peed_identity",
-  synchronize: true,
+  synchronize: false,
   logging: false,
   entities: [Contacts],
   extra:{

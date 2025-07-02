@@ -1,15 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, DeleteDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, DeleteDateColumn, Unique } from "typeorm";
 
 @Entity("contacts")
+@Unique(["phoneNumber", "email"])
 export class Contacts {
   @PrimaryGeneratedColumn({type: "int"})
   id!: number;
 
   @Column({ type: "varchar", length: 50, nullable: true })
-  phoneNumber?: string;
+  phoneNumber?: string | null;
 
-  @Column({ type: "varchar", length: 100, nullable: true })
-  email?: string;
+  @Column({ type: "varchar", length: 1000, nullable: true })
+  email?: string | null;
 
   @Column({ type: "int", nullable: true })
   linkedId?: number | null;
